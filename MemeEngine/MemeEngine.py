@@ -1,5 +1,5 @@
-from PIL import Image, ImageDraw, ImageFont
 from random import randint
+from PIL import Image, ImageDraw, ImageFont
 
 class MemeEngine():
 
@@ -8,50 +8,60 @@ class MemeEngine():
 
     def make_meme(self, img_path, text, author, width=500) -> str: #generated image path
 
-        """Create a Meme with quota and Author details
-        Arguments:
-            img_path {str} -- the file location for the input image.
-            text {str} -- the quotation on image.
-            author {str} -- The author of quote.
-            width {int} -- The pixel width value. Default=500.
+        """Create a Meme with the quote and the Author details
+        Arguments: img_path {str}: the file location for the image.
+            text {str}: the quote that shoud be on image.
+            width {int}: The pixel width value. Default=500.
+            author {str}: author of quote.
         
-        Returns:
-            str -- the file path to the output image.
+        Returns: str:the file path to the output image.
         """
 
-        print(img_path)
         img = Image.open(img_path)
         
+
         if width is not None:
             ratio = width/float(img.size[0])
+            
             height = int(ratio*float(img.size[1]))
+            
             img = img.resize((width,height), Image.NEAREST)
         
         draw = ImageDraw.Draw(img)
         
+        #doesnt worked on my OS
         #font = ImageFont.truetype('./fonts/LilitaOne-Regular.ttf',
         #                              size=20)
-
         font = ImageFont.load_default()
         
-        x_min = (img.size[0]/10)
-        x_max = (img.size[0]/2)
-        range_x = randint(x_min, x_max)
+        
+        max_x = (img.size[0]/2)
+        min_x = (img.size[0]/10)
+
+        range_x = randint(min_x, max_x)
 
         lines = [text, "- " + author]
-        line_height = font.getsize('hg')[1]   #Line Spacing
 
-        # Calculate y axis for text display
-        y_min = (img.size[1]/20)
-        y_max = img.size[1]
-        # avoid text overflow below + leave some space
-        y_max -= ((len(lines) + 1) * line_height)
-        range_y = randint(y_min, y_max)
+        line_height = font.getsize('hg')[1]
 
-        for line in lines:
-            draw.text((range_x, range_y), line, font=font, align="left")
+        # Calculate y axis
+
+        min_y = (img.size[1]/20)
+        
+        max_y = img.size[1]
+
+        max_y -= ((len(lines) + 1) * line_height)
+        
+        range_y = randint(min_y, max_y)
+
+        for l in lines:
+            
+            draw.text((range_x, range_y), l, font=font, align="left")
+            
             range_y += line_height
         
-        out_path = f'{self.output_dir}/{randint(0,100000000)}.jpeg'
-        img.save(out_path)
-        return out_path
+        op = f'{self.output_dir}/{randint(0,100000000)}.jpeg'
+
+        img.save(op)
+
+        return op
