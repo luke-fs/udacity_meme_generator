@@ -14,10 +14,10 @@ meme = MemeEngine('./static')
 def setup():
     """ Load all resources """
 
-    quote_files = ['./src/_data/DogQuotes/DogQuotesTXT.txt',
-                   './src/_data/DogQuotes/DogQuotesDOCX.docx',
-                   './src/_data/DogQuotes/DogQuotesPDF.pdf',
-                   './src/_data/DogQuotes/DogQuotesCSV.csv']
+    quote_files = ['./_data/DogQuotes/DogQuotesTXT.txt',
+                   './_data/DogQuotes/DogQuotesDOCX.docx',
+                   './_data/DogQuotes/DogQuotesPDF.pdf',
+                   './_data/DogQuotes/DogQuotesCSV.csv']
 
     # Use the Ingestor class to parse all files in the
     # quote_files variable
@@ -26,7 +26,7 @@ def setup():
     for f in quote_files:
         quotes.extend(Ingestor.parse(f))
 
-    images_path = "./src/_data/photos/dog/"
+    images_path = "./_data/photos/dog/"
 
     # Use the pythons standard library os class to find all
     # images within the images images_path directory

@@ -52,7 +52,7 @@ class MemeEngine():
 
         max_y -= ((len(lines) + 1) * line_height)
         
-        range_y = randint(min_y, max_y)
+        range_y = randint(int(min_y), int(max_y))
 
         for l in lines:
             

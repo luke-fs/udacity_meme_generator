@@ -14,6 +14,3 @@ class Ingestor(IngestorInterface):
         for ingestor in cls.ingestors:
             if ingestor.can_ingest(path):
                 return ingestor.parse(path)
-
-i = Ingestor()
-m = i.parse('/home/luke/Documents/udacity_meme_generator/src/_data/DogQuotes/DogQuotesCSV.csv')
