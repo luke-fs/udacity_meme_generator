@@ -19,7 +19,7 @@ to start the app.
 
 ## run meme.py
 To run meme.py, install the requirements.txt files in your virtual environment and type
-After it, use
+
 ```bash
 python3 meme.py
 ```
