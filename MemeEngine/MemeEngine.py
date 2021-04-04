@@ -38,6 +38,7 @@ class MemeEngine():
         font = ImageFont.truetype('./fonts/LilitaOne-Regular.ttf', size=20) #, encoding="unic"
         #font = ImageFont.load_default()
 
+
         max_x = (img.size[0]/2)
         min_x = (img.size[0]/10)
 
