@@ -1,5 +1,6 @@
 from random import randint
 from PIL import Image, ImageDraw, ImageFont
+import textwrap
 
 
 class MemeEngine():
@@ -34,35 +35,27 @@ class MemeEngine():
         draw = ImageDraw.Draw(img)
 
         # doesnt worked on my OS
-        font = ImageFont.truetype('./fonts/LilitaOne-Regular.ttf',
-                                      size=20, encoding="unic")
-        #font = ImageFont.load_default()
-
+        #font = ImageFont.truetype('./fonts/impact.ttf', size=20) #, encoding="unic"
+        font = ImageFont.load_default()
 
         max_x = (img.size[0]/2)
         min_x = (img.size[0]/10)
 
         range_x = randint(min_x, max_x)
 
-        lines = [text, "- " + author] #make to unicode?
+        # .encode(encoding='UTF-8',errors='strict')
+        ttext = text + "- " + author
 
-        line_height = font.getsize('hg')[1]
+        wrapper = textwrap.TextWrapper(width=50)
+        word_lst = wrapper.wrap(text=ttext)
+        text_new = ''
+        for word in word_lst[:-1]:
+            text_new = text_new + word + '\n'
+        text_new += word_lst[-1]
 
-        # Calculate y axis
-
-        min_y = (img.size[1]/20)
-
-        max_y = img.size[1]
-
-        max_y -= ((len(lines) + 1) * line_height)
-
-        range_y = randint(int(min_y), int(max_y))
-
-        for line in lines:
-
-            draw.text((range_x, range_y), line, font=font, align="left")
-
-            range_y += line_height
+        x, y = 100, 200
+        draw.text((x, y), text_new.encode(encoding='UTF-8'), font=font,
+                  align='center', stroke_width=1, stroke_fill='black')
 
         op = f'{self.output_dir}/{randint(0,100000000)}.jpeg'
 
