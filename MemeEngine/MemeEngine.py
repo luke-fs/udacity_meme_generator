@@ -35,8 +35,9 @@ class MemeEngine():
         draw = ImageDraw.Draw(img)
 
         # doesnt worked on my OS
-        #font = ImageFont.truetype('./fonts/impact.ttf', size=20) #, encoding="unic"
-        font = ImageFont.load_default()
+        font = ImageFont.truetype('./fonts/LilitaOne-Regular.ttf', size=20) #, encoding="unic"
+        #font = ImageFont.load_default()
+
 
         max_x = (img.size[0]/2)
         min_x = (img.size[0]/10)
@@ -54,7 +55,7 @@ class MemeEngine():
         text_new += word_lst[-1]
 
         x, y = 100, 200
-        draw.text((x, y), text_new.encode(encoding='UTF-8'), font=font,
+        draw.text((x, y), text_new, font=font,
                   align='center', stroke_width=1, stroke_fill='black')
 
         op = f'{self.output_dir}/{randint(0,100000000)}.jpeg'
