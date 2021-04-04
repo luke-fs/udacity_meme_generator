@@ -34,16 +34,17 @@ class MemeEngine():
         draw = ImageDraw.Draw(img)
 
         # doesnt worked on my OS
-        # font = ImageFont.truetype('./fonts/LilitaOne-Regular.ttf',
-        #                              size=20)
-        font = ImageFont.load_default()
+        font = ImageFont.truetype('./fonts/LilitaOne-Regular.ttf',
+                                      size=20, encoding="unic")
+        #font = ImageFont.load_default()
+
 
         max_x = (img.size[0]/2)
         min_x = (img.size[0]/10)
 
         range_x = randint(min_x, max_x)
 
-        lines = [text, "- " + author]
+        lines = [text, "- " + author] #make to unicode?
 
         line_height = font.getsize('hg')[1]
 
