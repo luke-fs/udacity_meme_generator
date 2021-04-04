@@ -6,6 +6,11 @@ from .QuoteModel import QuoteModel
 
 
 class CSVIngestor(IngestorInterface):
+    """The CSV Ingestor Class, to ingestor CSV quotes
+
+    Args:
+        IngestorInterface: This class inherits from the Interface
+    """
     allowed_extensions = ['csv']
 
     @classmethod

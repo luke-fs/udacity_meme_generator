@@ -71,11 +71,13 @@ def meme_post():
     # 2. Use the meme object to generate a meme using this temp
     #    file and the body and author form paramaters.
     # 3. Remove the temporary saved image.
-
-    image_url = request.form['image_url']
-    body = request.form['body']
-    author = request.form['author']
-    img = requests.get(image_url, allow_redirects=True)
+    try:
+        image_url = request.form['image_url']
+        body = request.form['body']
+        author = request.form['author']
+        img = requests.get(image_url, allow_redirects=True)
+    except:
+        raise Exception("The image_url you provided is not correct")
     img_file = f'./static/{random.randint(0, 100000000)}.jpg'
     open(img_file, 'wb').write(img.content)
     path = meme.make_meme(img_file, body, author)

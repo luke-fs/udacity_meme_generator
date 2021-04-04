@@ -1,9 +1,12 @@
 # Udacity Meme Generator
 
-The final project for udacity python nanodegree
+The final project for udacity python nanodegree. The project consists of a Meme generator.
+You can see random memes or provide your own image url.
 
 
 ## Installation
+
+Create a static folder inside the project where your images will be saved.
 
 Create an virtual environment and use
 ```bash
@@ -26,4 +29,5 @@ python3 meme.py
 It will create a meme with random quote in the static folder.
 
 ## (Sub)Models
-The project constists of a MemeEngine which is responsible for all image processing and of a QuoteEngine which is responsible for reading in quotes from PDF, Doc, Txt or CSV files. 
+The project constists of a MemeEngine which is responsible for all image processing and of a QuoteEngine which is responsible for reading in quotes from PDF, Doc, Txt or CSV files.
+The Quote Engine has implemented a strategy Object (Ingestor). Also there is an Interace implemented for the 4 different Ingestors.

@@ -7,6 +7,11 @@ from .QuoteModel import QuoteModel
 
 
 class DocxIngestor(IngestorInterface):
+    """The Docx Ingestor Class, to ingestor Docx quotes
+
+    Args:
+        IngestorInterface: This class inherits from Interface
+    """
     allowed_extensions = ['docx']
 
     @classmethod

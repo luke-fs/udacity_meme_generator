@@ -8,6 +8,11 @@ from .QuoteModel import QuoteModel
 
 
 class PDFIngestor(IngestorInterface):
+    """The PDF Ingestor Class, to ingestor PDF quotes
+
+    Args:
+        IngestorInterface: This class inherits from Interface
+    """
     allowed_extensions = ['pdf']
 
     @classmethod

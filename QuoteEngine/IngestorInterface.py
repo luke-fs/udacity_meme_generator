@@ -4,6 +4,10 @@ from typing import List
 from .QuoteModel import QuoteModel
 
 class IngestorInterface(ABC):
+    """The Interface for the different Ingestors
+    Args:
+        ABC: Inheritance from the abstract base class
+    """
 
     @classmethod
     def can_ingest(cls, path: str)->bool:

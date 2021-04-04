@@ -8,6 +8,11 @@ from .QuoteModel import QuoteModel
 
 
 class TextIngestor(IngestorInterface):
+    """The TXT Ingestor Class, to ingestor TXT quotes
+
+    Args:
+        IngestorInterface: This class inherits from Interface
+    """
     allowed_extensions = ['txt']
 
     @classmethod

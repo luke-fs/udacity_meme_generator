@@ -7,6 +7,11 @@ from .PDFIngestor import PDFIngestor
 from .DocxIngestor import DocxIngestor
 
 class Ingestor(IngestorInterface):
+    """The Ingestor strategy object
+
+    Args:
+        IngestorInterface: this class inherits from Interface
+    """
     ingestors = [DocxIngestor, CSVIngestor, PDFIngestor, TextIngestor]
 
     @classmethod
